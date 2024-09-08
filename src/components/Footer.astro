@@ -1,0 +1,29 @@
+---
+import Social from "./Social.astro"
+
+const github ="github"
+const githubUser = "jonnybhub"
+const linkedin = "linkedin"
+const linkedinUser = "jonathan-barrett-bab054114"
+const twitter = "twitter"
+const twitterUser = "psveagle"
+
+---
+
+<style>
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: #f0f0f0;
+    }
+</style>
+
+<footer>
+    <Social platform={github} username={githubUser} />
+    <Social platform={linkedin} username={linkedinUser} />
+    <Social platform={twitter} username={twitterUser} />
+    <p>© 2024 PsVEagle</p>
+</footer>

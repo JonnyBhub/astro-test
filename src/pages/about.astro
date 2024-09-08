@@ -1,13 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const pageTitle = 'About Me';
+
+const identity = {
+  firstName: 'John',
+  country: 'United Kingdom',
+  occupation: 'Web Developer',
+  hobbies: ["Gaming", "Formula1", "Football"]
+};
+
+const skills =["HTML", "CSS", "Javascript", "React", "Astro", "Writing Docs"];
+
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
-<Layout title="About Me">
+<Layout title={pageTitle}>
     <body>
-        <h1><span class="text-gradient">About Me</span></h1>
+        <h1><span class="text-gradient">{pageTitle}</span></h1>
     	<h2>Welcome to the astro site </h2>
 
     	<p>
             I am learning to use the <strong>astro</strong> framework.
         </p>
+
+        <p><strong>Here are a few facts about me:</strong></p>
+        <ul>
+          <li>My name is {identity.firstName}.</li>
+          <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+          {identity.hobbies.length >= 2 &&
+            <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+          }
+        </ul>
+        <p><strong>My skills are:</strong></p>
+        <ul>
+          {skills.map((skill) => <li>{skill}</li>)}
+        </ul>
+
+        {happy && <p>I am happy to be learning Astro!</p>}
+
+        {finished && <p>I finished this tutorial!</p>}
+
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
     </body>
 </Layout>

@@ -1,34 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+const allPosts = await Astro.glob('./posts/*.md');
 
 const title = 'My Astro Blog';
 ---
 
 <Layout title={title}>
     <body>
-        <h1><span class="text-gradient">{title}</span></h1>
     	<h2>Welcome to the astro blog </h2>
-
     	<p>
             I am learning to use the <strong>astro</strong> framework.
         </p>
         <ul>
-            <Card
-                href="/posts/post-1/"
-                title="Post 1"
-                body="This is the first blog post uploaded to my site."
-            />
-            <Card
-                href="/posts/post-2/"
-                title="Post 2"
-                body="This is the second blog post uploaded to my site."
-            />
-            <Card
-                href="/posts/post-3/"
-                title="Post 3"
-                body="This is the third blog post uploaded to my site."
-            />
+            {allPosts.map((post) => (
+                <Card
+                    href={post.url||''}
+                    title={post.frontmatter.title}
+                    body={post.frontmatter.description}
+                />
+            ))}
         </ul>
     </body>
 </Layout>

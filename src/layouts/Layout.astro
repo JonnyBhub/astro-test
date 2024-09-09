@@ -25,6 +25,7 @@ const { title } = Astro.props;
 	</head>
 	<body>
 	    <Header />
+		<h1><span class="text-gradient">{title}</span></h1>
 		<slot />
 		<Footer />
 	</body>
@@ -40,6 +41,9 @@ const { title } = Astro.props;
 			rgb(var(--accent-light)) 30%,
 			white 60%
 		);
+	}
+	h1{
+	   size: 10rem;
 	}
 
 </style>

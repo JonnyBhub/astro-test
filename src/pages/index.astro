@@ -1,11 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Greeting from '../components/Greeting';
 ---
 
 <Layout title="Home Page">
 	<main>
 		<h2>Welcome to the astro site </h2>
+
+		<Greeting client:load messages={['Hello', 'Hi', 'Hey', 'Howdy', 'Hi There']} />
+
 		<p>
             I am learning to use the <strong>astro</strong> framework.
         </p>

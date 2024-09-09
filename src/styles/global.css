@@ -1,21 +1,23 @@
 html {
-	font-family: system-ui, sans-serif;
-	background: #13151a;
+  font-family: system-ui, sans-serif;
+  background: #13151a;
+}
+
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
 }
 code {
-	font-family:
-		Menlo,
-		Monaco,
-		Lucida Console,
-		Liberation Mono,
-		DejaVu Sans Mono,
-		Bitstream Vera Sans Mono,
-		Courier New,
-		monospace;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 h1 {
-    display: block;
+  display: block;
 }
 
 .text-gradient {
@@ -28,26 +30,24 @@ h1 {
 
 /* nav styles */
 .hamburger {
-    padding-right:20px;
-    cursor: pointer;
+  padding-right: 20px;
+  cursor: pointer;
 }
 
 .hamburger .line {
-    display:block;
-    width:40px;
-    height:5px;
-    margin-bottom:10px;
-    background-color: #ff9776;
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: #ff9776;
 }
 
-
-
-.nav-links{
-    width: 100%;
-    top: 5rem;
-    left:48px;
-    display: none;
-    margin:0;
+.nav-links {
+  width: 100%;
+  top: 5rem;
+  left: 48px;
+  display: none;
+  margin: 0;
 }
 
 .nav-links a {
@@ -82,7 +82,7 @@ h1 {
     display: inline-block;
     padding: 15px 20px;
   }
-  .hamburger
-  {
-      display:none;
+  .hamburger {
+    display: none;
   }
+}

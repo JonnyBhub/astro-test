@@ -1,5 +1,6 @@
 ---
 import Social from "./Social.astro"
+import ThemeIcon from "./ThemeIcon.astro"
 
 const github ="github"
 const githubUser = "jonnybhub"
@@ -17,13 +18,14 @@ const twitterUser = "psveagle"
         align-items: center;
         gap: 1rem;
         padding: 1rem;
-        background-color: #f0f0f0;
+        color:black
     }
 </style>
 
-<footer>
+<footer class="bg-gray-400">
     <Social platform={github} username={githubUser} />
     <Social platform={linkedin} username={linkedinUser} />
     <Social platform={twitter} username={twitterUser} />
     <p>© 2024 PsVEagle</p>
+    <ThemeIcon class="right-0"/>
 </footer>

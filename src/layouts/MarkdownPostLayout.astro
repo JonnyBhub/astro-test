@@ -4,16 +4,20 @@ const { frontmatter } = Astro.props;
 
 ---
 <Layout title={frontmatter.title}>
-    <p>Published on: {frontmatter.pubDate.toString().slice(0,10)} </p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-    <div class="tags">
-       {frontmatter.tags.map((tag)=><p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>)}
-   </div>
-
-    <slot />
+    <div class="justify-center items-center rounded border border-gray-300 shadow-[4px_4px_0px_0px_rgba(75,85,99,1)] p-4 w-9/10 m-4">
+        <p>Published on: {frontmatter.pubDate.toString().slice(0,10)} </p>
+        <p><em>{frontmatter.description}</em></p>
+        <p>Written by {frontmatter.author}</p>
+        <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+        <div class="tags">
+            {frontmatter.tags.map((tag :string)=><p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>)}
+        </div>
+    </div>
+    <div class="prose prose-h1:text-4xl p-4 text-slate-400 prose-h1:text-slate-400 prose-h2:text-slate-400 justify-center">
+        <slot />
+    </div>
 </Layout>
+
 <style>
   a {
     color: #00539F;

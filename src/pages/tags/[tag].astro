@@ -1,10 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/Card.astro';
+import type { MarkdownInstance } from 'astro';
+import type {Post} from '../../types/post';
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob('../posts/*.md');
-  const uniqueTags = [...new Set(allPosts.flatMap((post) => post.frontmatter.tags))]
+ const allPosts:MarkdownInstance<Post>[] = await Astro.glob('../posts/*.md');
+  const uniqueTags:string[] = [...new Set(allPosts.flatMap((post:MarkdownInstance<Post>) => post.frontmatter.tags))]
 
   return uniqueTags.map((tag) => {
     const filteredPosts = allPosts.filter((post)=> post.frontmatter.tags?.includes(tag))
@@ -22,6 +24,6 @@ const { posts } = Astro.props;
 <Layout title={tag}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {posts.map((post) => <Card href={post.url} title={post.frontmatter.title} body={post.frontmatter.description} />)}
+    {posts.map((post) => <Card href={post.url||''} title={post.frontmatter.title} body={post.frontmatter.description} />)}
   </ul>
 </Layout>

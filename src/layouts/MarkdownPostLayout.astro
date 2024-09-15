@@ -1,39 +1,36 @@
 ---
 import Layout from './Layout.astro';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+import {Badge} from "@/components/ui/badge"
+
 const { frontmatter } = Astro.props;
 
 ---
 <Layout title={frontmatter.title}>
-    <div class="justify-center items-center rounded border border-gray-300 shadow-[4px_4px_0px_0px_rgba(75,85,99,1)] p-4 w-9/10 m-4">
-        <p>Published on: {frontmatter.pubDate.toString().slice(0,10)} </p>
-        <p><em>{frontmatter.description}</em></p>
-        <p>Written by {frontmatter.author}</p>
-        <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <Card className="m-8">
+        <CardHeader>
+            <CardTitle>{frontmatter.description}</CardTitle>
+            <CardDescription>Published on: {frontmatter.pubDate.toString().slice(0,10)}</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <p>Written by {frontmatter.author}</p>
+            <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+        </CardContent>
+        <CardFooter>
         <div class="tags">
-            {frontmatter.tags.map((tag :string)=><p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>)}
+            {frontmatter.tags.map((tag :string)=><Badge className='mr-1'><a href={`/tags/${tag}`}>{tag}</a></Badge>)}
         </div>
-    </div>
-    <div class="prose prose-h1:text-4xl p-4 text-slate-400 prose-h1:text-slate-400 prose-h2:text-slate-400 justify-center">
-        <slot />
-    </div>
+        </CardFooter>
+    </Card>
+    <Card className="m-8 p-4 max-w-full prose prose-h1:text-4xl text-slate-400 prose-h1:flex prose-h1:justify-center prose-gray prose-headings:text-slate-400">
+        <slot class="" />
+    </Card>
 </Layout>
-
-<style>
-  a {
-    color: #00539F;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
-    font-size: 1.15em;
-    background-color: #F8FCFD;
-  }
-</style>
